@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ENG=MONS</string>
+
+    <string name="title_section1">Tango</string>
+    <string name="atoz">AtoZ</string>
+    <string name="calendar">Calender</string>
+    <string name="week">Week Words:</string>
+    <string name="today">Today Words:</string>
+    <string name="total">Total Words:</string>
+    <string name="mametisiki">育て方-HOWTO</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">現在のレベル</string>
+
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

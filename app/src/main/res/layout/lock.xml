@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parentt"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:setText="問"
+            android:id="@+id/toi"
+            />
+
+        
+        <LinearLayout
+            android:layout_width="fill_parentt"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:Text="答1"
+            android:id="@+id/kai1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:Text="答2"
+            android:id="@+id/kai2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parentt"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:Text="答3"
+            android:id="@+id/kai3"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:Text="答4"
+            android:id="@+id/kai4"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:setText="解答"
+        android:id="@+id/kaitou"
+        />
+
+    <Button
+        android:id="@+id/fin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_jog_dial_unlock"
+        android:text="To Lock Screen"
+        />
+</LinearLayout>
