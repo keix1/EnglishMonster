@@ -14,7 +14,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:setText="問"
+            android:text="問"
             android:id="@+id/toi"
             />
 
@@ -28,14 +28,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:Text="答1"
+            android:text="答1"
             android:id="@+id/kai1"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:Text="答2"
+            android:text="答2"
             android:id="@+id/kai2"/>
         </LinearLayout>
 
@@ -48,14 +48,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:Text="答3"
+            android:text="答3"
             android:id="@+id/kai3"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:Text="答4"
+            android:text="答4"
             android:id="@+id/kai4"/>
 
         </LinearLayout>
@@ -65,7 +65,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:setText="解答"
+        android:text="解答"
         android:id="@+id/kaitou"
         />
 

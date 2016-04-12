@@ -312,11 +312,7 @@ public class MainActivity extends ActionBarActivity
             }
         });
 
-
 //データベース取得
-
-
-
 
         //項目削除
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -390,9 +386,6 @@ public class MainActivity extends ActionBarActivity
         target.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //                          int x = (int) event.getRawX();
-                //                          int y = (int) event.getRawY();
-
                 Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
                 vibrator.vibrate(10);
 
@@ -401,46 +394,28 @@ public class MainActivity extends ActionBarActivity
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-
                       //  Log.i("childcount", String.valueOf(frameLayout01.getChildCount()));
                         targetLocalX = target.getLeft();
                         targetLocalY = target.getTop();
-
                         screenX = x;
                         screenY = y;
-
                         break;
-
                     case MotionEvent.ACTION_MOVE:
                        // Log.i("framecount", String.valueOf(frameLayout01.getChildCount()));
-
                         int diffX = screenX - x;
                         int diffY = screenY - y;
-
                         targetLocalX -= diffX;
                         targetLocalY -= diffY;
-
                         target.layout(targetLocalX,
                                 targetLocalY,
                                 targetLocalX + target.getWidth(),
                                 targetLocalY + target.getHeight());
-
                         screenX = x;
                         screenY = y;
-
                         break;
-
                     case MotionEvent.ACTION_UP:
-                        //Log.i("childcount", String.valueOf(frameLayout01.getChildCount()));
-//                        int trashLeft = trash.getLeft() + trash.getWidth() / 2;
-//                        int trashTop = trash.getTop() + trash.getHeight() / 2;
                         int targetRight = target.getLeft() + target.getWidth();
                         int targetBottom = target.getTop() + target.getHeight();
-
-//                        if (targetRight > trashLeft && targetBottom > trashTop) {
-//                           frameLayout01.removeView(target);
-//                        }
-
                         Log.i("target", "xx=" + String.valueOf(targetLocalX) + ", yy=" + String.valueOf(targetLocalY));
                         break;
                 }
@@ -448,8 +423,6 @@ public class MainActivity extends ActionBarActivity
             }
         });
 
-
-        
         engField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             @Override
@@ -458,18 +431,14 @@ public class MainActivity extends ActionBarActivity
                 if (hasFocus) {
                     //InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     //imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    
                     // ソフトキーボードを表示にする
                     imm.showSoftInput(v, InputMethodManager.SHOW_FORCED);
-                    
                 }
                 else {
                     //InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     //imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    
                     // ソフトキーボードを非表示にする
                     imm.hideSoftInputFromWindow(v.getWindowToken(),0);
-
                 }
             }
         });
@@ -482,53 +451,28 @@ public class MainActivity extends ActionBarActivity
                 if (hasFocus) {
                     //InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     //imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    
                     // ソフトキーボードを表示にする
                     imm.showSoftInput(v, InputMethodManager.SHOW_FORCED);
-                    
                 }
                 else {
                     //InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     //imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    
                     // ソフトキーボードを非表示にする
                     imm.hideSoftInputFromWindow(v.getWindowToken(),0);
-
-
                 }
             }
         
         });
 
-//        jpField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                // EditTextのフォーカスが外れた場合
-//                if (hasFocus == false) {
-//                    // ソフトキーボードを非表示にする
-//                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-//                }
-//            }
-//        });
-
         db.close();
-
         //経験値 単語数 更新処理
         exUpdate();
 //----Monster------
-
     }
-
     //レベルダウン 経験値
     private void exDown(int tangosu) {
-
-
-
         if(nowExp-tangosu >= 0) {
             nowExp = nowExp - tangosu;
-
-
             //レベルダウン
             if (nowExp < exMap.get(nowLevel)) {//nowExp > nextExp) {
                 //nextExp = exMap.get(nowLevel + 1);
@@ -541,13 +485,9 @@ public class MainActivity extends ActionBarActivity
                 nextExp = exMap.get(nowLevel + 1);
                 //次のレベル”まで”の経験値を算出
                 toNextExp = nextExp - nowExp;
-
                 Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
                 vibrator.vibrate(100);
-
-
                 makeToasty("レベルダウン…");
-
                 makeToastyLong("現在のレベルは" + nowLevel + "です\n次のレベルまで，あと" + toNextExp + "EX必要です");
 //        db.execSQL("UPDATE monster SET exp = ? WHERE name = Monster);",new Object[]{nowExp});
 //        int exOr = db.update(String table, ContentValues values, String whereClause, String[] whereArgs)
@@ -565,7 +505,6 @@ public class MainActivity extends ActionBarActivity
                 cValues.put("exp", nowExp);//nowExp);
                 cValues.put("level", nowLevel);
 
-
                 MonsterOpenHelper helper = new MonsterOpenHelper(this);
                 final SQLiteDatabase db = helper.getWritableDatabase();
 
@@ -574,13 +513,10 @@ public class MainActivity extends ActionBarActivity
                 } catch (Exception e) {
 
                 }
-
-
             }
         } else {
             nowExp = 0;
         }
-
     }
 
     //----EngField読み取り
@@ -637,18 +573,13 @@ public class MainActivity extends ActionBarActivity
             listReload(cur);
         }
 
-
         db.close();
     /*--- 取得例 ---*/
 
     }
 //----EngField読み取り
 
-
-
-
 //----Monster---]
-
 
     public void makeToasty(String st) {
         Toast.makeText(this,st, Toast.LENGTH_SHORT).show();
@@ -672,7 +603,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onClick(View v) {
-
         //       int childCount = frameLayout01.getChildCount();
         //       Log.i("childcount",String.valueOf(frameLayout01.getChildCount()));
 
@@ -697,8 +627,6 @@ public class MainActivity extends ActionBarActivity
                 makeToasty(jpField.getText().toString()+"で検索中");
                 break;
         }
-
-
     }
 
     private void jumpSearch(String word) {
@@ -725,10 +653,7 @@ public class MainActivity extends ActionBarActivity
                     bl = false;
                 }
             }
-
             if(bl==true) addItem();
-
-
         }
         else {
             Toast.makeText(this, "空白は食べれない", Toast.LENGTH_SHORT).show();
@@ -751,7 +676,6 @@ public class MainActivity extends ActionBarActivity
         MonsterOpenHelper helper = new MonsterOpenHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
 
-
         //現在時刻の取得
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
@@ -770,11 +694,11 @@ public class MainActivity extends ActionBarActivity
         insertTango.put("japanese", jpField.getText().toString().trim());
         insertTango.put("date",strSysDate);
         insertTango.put("time",strSysTime);
-try {
-        long id = db.insert("tango", null, insertTango);
-}finally {
-    db.close();
-}
+        try {
+                long id = db.insert("tango", null, insertTango);
+        }finally {
+            db.close();
+        }
         dataList.add(0, engField.getText().toString() + " = " + jpField.getText().toString());
         adapter = new ArrayAdapter<String>(
                 this,
@@ -784,41 +708,15 @@ try {
         engField.getEditableText().clear();
         jpField.getEditableText().clear();
         engField.requestFocus();
-
-
         exUpdate();
         Toast.makeText(this, "もぐもぐ", Toast.LENGTH_SHORT).show();
         //        adapter.add(engField.getText().toString() + " = " + jpField.getText().toString());
-
     }
 
 // アップデート 経験値更新
     protected void exUpdate() {
-
         MonsterOpenHelper helper = new MonsterOpenHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
-
-        //        int year = calendar.get(Calendar.YEAR);
-        //        int month = calendar.get(Calendar.MONTH) + 1;
-        //        int day = calendar.get(Calendar.DATE);
-        //
-        //        cal = Calendar.getInstance();
-        //        cal.set(Calendar.DAY_OF_WEEK_IN_MONTH,1);
-        //        cal.set(Calendar.DAY_OF_WEEK,7);
-        //        int thisSat = cal.getTime().format("dd");
-
-
-        ///        if(thisSat <= 07) {
-        /////            Cursor cus = db.rawQuery("SELECT * FROM tango WHERE date BETWEEN " + year + "-" + month + "-01 ||  AND " + year + "-" + month + "-07 || '%';");
-        ///
-        ///            final TextView weekTango = (TextView)findViewById(R.id.weekCountWords);
-        ///            long tangoWeekCount = DatabaseUtils.queryNumEntries(db, "tango","date BETWEEN ? AND ?",new String[]{ year + "-" + month + "-"+ day + " 00:00:00", year + "-" + month + "-07 23:59:59"  });
-        ///            weekTango.setText(String.valueOf(tangoWeekCount));
-        ///        } else {
-        ///
-        
-
-
 
         //とりあえずは単語数のみアップデート
         final TextView nowTango = (TextView)findViewById(R.id.nowCountWords);
@@ -849,7 +747,6 @@ try {
         long tangoWeekCount = DatabaseUtils.queryNumEntries(db, "tango", "date BETWEEN ? AND ?", new String[]{strSysDateW0, strSysDateW});
         weekTango.setText(String.valueOf(tangoWeekCount));
 
-
         //今日の分の単語数のアップデート
         Calendar calendarDay = Calendar.getInstance();
         SimpleDateFormat sdfDay = new SimpleDateFormat("yyyy-MM-dd");
@@ -859,16 +756,13 @@ try {
         long tangoTodayCount = DatabaseUtils.queryNumEntries(db, "tango","date LIKE ?",new String[]{ strSysDateDay });
         todayTango.setText(String.valueOf(tangoTodayCount));
 
-
         //改修途中
         mNavigationDrawerFragment.countingFrag((int)tangoTodayCount,(int)tangoWeekCount,(int)tangoCount);
-
 
         // レベル管理
         Cursor cu = db.query("tango", new String[] {"SUM(LENGTH(english))"}, null, null, null, null, null);
         cu.moveToNext();
         nowExp = cu.getInt(0);
-
 
  //       exMap.get(nowLevel);
 
@@ -884,20 +778,14 @@ try {
 
                nowLevel = nowLevel + 1;
                //nowExpTemp = nowExpTemp - exMap.get(nowLevel);
-
             }
-
-
             //            次のレベルの経験値を算出
             nextExp = exMap.get(nowLevel+1);
             //次のレベル”まで”の経験値を算出
             toNextExp = nextExp - nowExp;
-
             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
             vibrator.vibrate(1000);
-
             makeToasty("レベルアップ！");
-
             makeToastyLong("現在のレベルは" + nowLevel + "です\n次のレベルまで，あと" + toNextExp + "EX必要です");
 //        db.execSQL("UPDATE monster SET exp = ? WHERE name = Monster);",new Object[]{nowExp});
 //        int exOr = db.update(String table, ContentValues values, String whereClause, String[] whereArgs)
@@ -937,19 +825,10 @@ try {
 //１レベルずつの場合はこちらを使う
 //            nextExp = exMap.get(nowLevel+1);
 //            }
-
-
-
-
-
-
         }
 
-
         toNextExp = nextExp - nowExp;
-
         mNavigationDrawerFragment.setExp(nowLevel, toNextExp);
-
         //ローカルにDBバックアップ
         try {
             FileInputStream input = new FileInputStream(db_file);
@@ -966,14 +845,9 @@ try {
             Log.i("OUT","out失敗¥n"+e);
 
         }
-
         // filecopy(db_file,ENG_PATH+"/tango.db");
-
-
-
         //ExOpenHelper exHelper = new ExOpenHelper(this);
         //SQLiteDatabase exDb = exHelper.getWritableDatabase();
-
         //String sqlDayEx = "select ex from experience where when = today;";
         //Cursor cuex = exDb.query("experience", new String[]{"when", "ex"}, null, null, null, null, null);
         //today.setText(todayEX);
@@ -984,13 +858,6 @@ try {
     }
 
 //----Monster---
-
-
-
-
-
-
-
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -1083,7 +950,6 @@ try {
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
